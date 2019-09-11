@@ -1,0 +1,30 @@
+<div class="application-wrapper">
+
+  <div *ngIf="!(applicationList$ | async) else showTable" class="text-center">
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+
+
+  <ng-template #showTable>
+    <table class="table table-striped">
+      <thead class="bg-primary text-white">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Key</th>
+        <th scope="col">Name</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let app of applicationList$ | async">
+        <td>{{ app?.appID }}</td>
+        <td>{{ app?.appKey }}</td>
+        <td>{{ app?.appName }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </ng-template>
+
+
+</div>
